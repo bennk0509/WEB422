@@ -24,6 +24,11 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors()); // Allow cross-origin requests
 app.use(express.json()); // Parse JSON bodies
+app.set('views', __dirname + '/views');
+app.use(express.static(__dirname + '/public'));
+require('pg'); // explicitly require the "pg" module
+const Sequelize = require('sequelize');
+
 
 app.get('/', (req, res) => {
   res.json({
